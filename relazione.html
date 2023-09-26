@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descrizione dell'Exploit XSS Persistente</title>
+    <!-- Aggiungi il link al file CSS di Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Exploit XSS Persistente in Kimai 2</h1>
+        <p>Questo è un esempio di un exploit che sfrutta una vulnerabilità di tipo Cross-Site Scripting (XSS) persistente in Kimai 2, una piattaforma di gestione del tempo open source.</p>
+        
+        <h2>Passo-passo dell'Exploit</h2>
+        <ol>
+            <li>L'utente normale tenta di aggiungere un timesheet (registro delle ore lavorate) attraverso un link specifico nel software Kimai 2.</li>
+            <li>Nella descrizione del timesheet, l'utente inserisce il payload "><svg/onload=alert('xss')>. Questo payload è progettato per sfruttare la vulnerabilità XSS, poiché contiene del codice JavaScript dannoso (alert('xss')) all'interno di un tag SVG.</li>
+            <li>L'utente salva le modifiche, inviando così il payload al server Kimai 2.</li>
+            <li>Dopo aver salvato le modifiche, l'utente aggiorna la pagina. A questo punto, il payload viene eseguito perché il server Kimai 2 non ha sanificato correttamente i dati inseriti nella descrizione del timesheet. Di conseguenza, viene visualizzato un popup con il messaggio "xss", dimostrando che l'attacco XSS ha avuto successo.</li>
+        </ol>
+
+        <p>Il payload è inserito all'interno del campo "timesheet_edit_form[description]" e viene interpretato come codice JavaScript dannoso quando visualizzato nel browser dell'utente. Questo è un esempio di XSS persistente, in cui il payload dannoso viene memorizzato nel server e poi restituito ad altri utenti quando visualizzano la pagina, consentendo all'attaccante di eseguire codice malevolo nel contesto del browser delle vittime.</p>
+        
+        <!-- Aggiungi un'immagine -->
+        <img src="immagine.jpg" alt="Immagine di esempio" class="img-fluid">
+
+        <!-- Aggiungi il testo sulla SQL Injection -->
+        <h2>Exploit di SQL Injection su microASP (Portal+) CMS</h2>
+        <p>Questo è un esempio di un exploit di SQL injection su microASP (Portal+) CMS. Questo exploit è stato creato per sfruttare una vulnerabilità di tipo SQL injection presente nella piattaforma.</p>
+        <h3>Informazioni sull'exploit:</h3>
+        <ul>
+            <li>Data dell'exploit: 05/05/2019</li>
+            <li>Rischio: Alto (High)</li>
+            <li>Vulnerabilità: CWE-89 (SQL Injection)</li>
+            <li>Autore: Felipe Andrian Peixoto</li>
+            <li>Homepage del fornitore: <a href="http://www.example.com">www.example.com</a></li>
+            <li>Email dell'autore: <a href="mailto:autore@example.com">autore@example.com</a></li>
+            <li>Sistemi operativi testati: Windows, Linux</li>
+        </ul>
+
+        <h3>Descrizione dell'exploit:</h3>
+        <p>L'URL target dell'exploit è: http://host/patch/pagina.phtml?explode_tree=[SQL Injection]. L'obiettivo è il parametro explode_tree.</p>
+        <h3>PoC (Proof of Concept):</h3>
+        <p>L'exploit dimostra come sfruttare la SQL injection nell'URL. Utilizza una payload che sfrutta la funzione extractvalue per estrarre dati dal database MySQL.</p>
+        <p>Il payload '/*!50000and*/+/*!50000extractvalue*/(0x0a,/*!50000concat*/(0x0a,0x73337830753a,(/*!50000select*/ database()),0x3a7333783075))--+- viene utilizzato per eseguire una query SQL dannosa che estrae il nome del database MySQL corrente e lo concatena con altri dati. Il risultato verrà poi visualizzato nell'output HTTP.</p>
+        <p>La variante del payload utilizza la percentuale %20 per rappresentare uno spazio in URL-encoded e funziona in modo simile.</p>
+        <h3>EOF (End of File):</h3>
+        <p>L'EOF indica la fine dell'exploit.</p>
+    </div>
+
+    <!-- Aggiungi un'immagine alla fine della pagina -->
+    <img src="altre_immagini.jpg" alt="Altra immagine di esempio" class="img-fluid">
+
+    <!-- Aggiungi il link al file JavaScript di Bootstrap (opzionale) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
