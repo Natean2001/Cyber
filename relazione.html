@@ -15,7 +15,7 @@
         <h2>Passo-passo dell'Exploit</h2>
         <ol>
             <li>L'utente normale tenta di aggiungere un timesheet (registro delle ore lavorate) attraverso un link specifico nel software Kimai 2.</li>
-            <li>Nella descrizione del timesheet, l'utente inserisce il payload "><svg/onload=alert('xss')>. Questo payload è progettato per sfruttare la vulnerabilità XSS, poiché contiene del codice JavaScript dannoso (alert('xss')) all'interno di un tag SVG.</li>
+            <li>Nella descrizione del timesheet, l'utente inserisce il payload "><"svg"/onload=alert('xss')>. Questo payload è progettato per sfruttare la vulnerabilità XSS, poiché contiene del codice JavaScript dannoso (alert('xss')) all'interno di un tag SVG.</li>
             <li>L'utente salva le modifiche, inviando così il payload al server Kimai 2.</li>
             <li>Dopo aver salvato le modifiche, l'utente aggiorna la pagina. A questo punto, il payload viene eseguito perché il server Kimai 2 non ha sanificato correttamente i dati inseriti nella descrizione del timesheet. Di conseguenza, viene visualizzato un popup con il messaggio "xss", dimostrando che l'attacco XSS ha avuto successo.</li>
         </ol>
